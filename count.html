@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KINGCINEMA User Counter</title>
+    <style>
+        #userCounter {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="userCounter">KINGCINEMA USER RIGHT NOW: 0</div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+        import { getDatabase, ref, get, set, runTransaction, onValue, update } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyBaTaZ1HupAAHoF6-v2lyzMZY9Sjp7a46E",
+            authDomain: "kingstv-66eb8.firebaseapp.com",
+            databaseURL: "https://kingstv-66eb8-default-rtdb.firebaseio.com",
+            projectId: "kingstv-66eb8",
+            storageBucket: "kingstv-66eb8.appspot.com",
+            messagingSenderId: "847763241360",
+            appId: "1:847763241360:web:5563a11fbf3fdbba1d1b15",
+            measurementId: "G-418HV2XX8E"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // ===== Device ID via localStorage =====
+        let deviceId = localStorage.getItem('deviceId');
+        if (!deviceId) {
+            deviceId = 'id_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('deviceId', deviceId);
+        }
+
+        const userRef = ref(db, `banned_devices/${deviceId}`);
+        const countRef = ref(db, 'users_count');
+
+        // ===== Initialize users_count if not exist =====
+        get(countRef).then(snapshot => {
+            if (!snapshot.exists()) {
+                set(countRef, 0);
+            }
+        });
+
+        // ===== Initialize device in banned_devices if not exist =====
+        get(userRef).then(snapshot => {
+            if (!snapshot.exists()) {
+                set(userRef, { name: "Unknown", banned: false });
+            }
+
+            // Check banned status
+            get(userRef).then(snap => {
+                if (snap.exists() && snap.val().banned === true) {
+                    alert("Your device is banned");
+                } else {
+                    // One increment per device
+                    if (!localStorage.getItem('hasCounted')) {
+                        runTransaction(countRef, current => {
+                            return (current || 0) + 1;
+                        });
+                        localStorage.setItem('hasCounted', 'true');
+                    }
+
+                    // Real-time display
+                    onValue(countRef, snap2 => {
+                        const count = snap2.val() || 0;
+                        document.getElementById('userCounter').innerText =
+                            "KINGCINEMA USER RIGHT NOW: " + count;
+                    });
+                }
+            });
+        }).catch(error => console.error(error));
+
+    </script>
+</body>
+</html>
