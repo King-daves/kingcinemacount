@@ -2,160 +2,146 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KINGCINEMA | Official Download</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINGCINEMA | PREMIUM ACCESS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #020617 100%); /* Darker, more modern gradient */
+        :root { --gold: #facc15; --dark: #050505; }
+        body { 
+            background-color: var(--dark);
+            background-image: 
+                radial-gradient(circle at 50% -20%, #1e1b4b 0%, transparent 50%),
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #e2e8f0; /* Lighter text for better readability */
-            overflow-x: hidden; /* Prevent horizontal scroll on small devices */
+            color: white;
+            min-height: 100vh;
         }
-        .glass-card {
-            background: rgba(17, 24, 39, 0.7); /* Darker, more subtle glass effect */
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(71, 85, 105, 0.3); /* Softer border */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Deeper shadow */
-        }
-        .neon-glow {
-            filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6)) drop-shadow(0 0 20px rgba(251, 191, 36, 0.3));
-        }
-        .glow-button {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 5px 20px rgba(251, 191, 36, 0.4);
-        }
-        .glow-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(251, 191, 36, 0.6);
-        }
-        .glow-button:focus { /* For TV remote and keyboard navigation */
-            outline: none;
-            border: 3px solid #fcd34d; /* Bright yellow border */
-            box-shadow: 0 0 0 5px rgba(251, 191, 36, 0.5), 0 5px 25px rgba(251, 191, 36, 0.8);
-            transform: scale(1.03);
-        }
-        .title-font { font-family: 'Orbitron', sans-serif; }
 
-        /* Responsive Text Sizes */
-        @media (max-width: 640px) { /* Mobile */
-            .main-title { font-size: 3.5rem; } /* ~56px */
-            .subtitle { font-size: 0.875rem; } /* 14px */
-            .version-title { font-size: 1.75rem; } /* 28px */
-            .description-text { font-size: 0.95rem; } /* ~15px */
-            .download-button { font-size: 1rem; padding-top: 1.25rem; padding-bottom: 1.25rem; } /* 16px */
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+        
+        /* Maangas Focus Effect */
+        .btn-focus {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(250, 204, 21, 0.1);
         }
-        @media (min-width: 641px) and (max-width: 1024px) { /* Tablet/Small Desktop */
-            .main-title { font-size: 4.5rem; } /* ~72px */
-            .subtitle { font-size: 1rem; } /* 16px */
-            .version-title { font-size: 2rem; } /* 32px */
-            .description-text { font-size: 1.05rem; } /* ~17px */
-            .download-button { font-size: 1.125rem; padding-top: 1.375rem; padding-bottom: 1.375rem; } /* 18px */
+        .btn-focus:focus, .btn-focus:hover {
+            outline: none !important;
+            transform: scale(1.05);
+            background: var(--gold) !important;
+            color: black !important;
+            box-shadow: 0 0 50px rgba(250, 204, 21, 0.4);
+            border-color: var(--gold);
         }
-        @media (min-width: 1025px) { /* Large Desktop/TV */
-            .main-title { font-size: 5.5rem; } /* ~88px */
-            .subtitle { font-size: 1.125rem; } /* 18px */
-            .version-title { font-size: 2.5rem; } /* 40px */
-            .description-text { font-size: 1.15rem; } /* ~18px */
-            .download-button { font-size: 1.25rem; padding-top: 1.5rem; padding-bottom: 1.5rem; } /* 20px */
+
+        .glass-panel {
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
+
+        /* Animated Scanline Effect */
+        .scanline {
+            width: 100%; height: 2px;
+            background: rgba(250, 204, 21, 0.1);
+            position: absolute;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 sm:p-8">
+<body class="flex flex-col items-center justify-center p-6">
 
-    <div class="max-w-4xl w-full text-center py-10 px-4 sm:px-6 lg:px-8">
-        <div class="mb-12 md:mb-16">
-            <h1 class="title-font main-title font-black italic tracking-tighter text-yellow-400 mb-4 neon-glow">
-                KING<span class="text-white font-normal">CINEMA</span>
-            </h1>
-            <p class="subtitle text-slate-400 font-semibold tracking-wide uppercase">
-                The Ultimate Streaming Experience, Anywhere.
+    <div class="text-center mb-12 relative">
+        <div class="absolute -inset-1 bg-yellow-500 blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+        <h1 class="orbitron text-6xl md:text-8xl font-black tracking-tighter italic text-yellow-500 mb-2">
+            KING<span class="text-white drop-shadow-sm">CINEMA</span>
+        </h1>
+        <div class="flex items-center justify-center gap-4">
+            <div class="h-[1px] w-12 bg-zinc-800"></div>
+            <p class="text-[10px] md:text-xs tracking-[0.6em] text-zinc-500 uppercase font-bold italic">
+                Ultimate Streaming Platform
             </p>
+            <div class="h-[1px] w-12 bg-zinc-800"></div>
         </div>
+    </div>
 
-        <div class="glass-card p-6 sm:p-10 lg:p-14 rounded-3xl sm:rounded-[2.5rem] relative overflow-hidden flex flex-col items-center justify-center">
-            <div class="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-yellow-500/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-            <div class="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-indigo-500/10 rounded-full blur-3xl opacity-30 animate-pulse delay-500"></div>
-            
-            <div class="relative z-10 flex flex-col items-center">
-                <div class="relative inline-block mb-8 md:mb-10">
-                    <div class="bg-gradient-to-br from-yellow-300 to-yellow-600 w-24 h-24 sm:w-28 sm:h-28 rounded-3xl flex items-center justify-center shadow-lg relative border border-yellow-200/20 glow-button">
-                        <span class="text-5xl sm:text-6xl text-black">🎬</span>
+    <div class="max-w-xl w-full glass-panel rounded-[3rem] p-12 relative overflow-hidden">
+        <div class="scanline"></div>
+        
+        <div class="relative z-10 text-center">
+            <div class="mb-10 inline-block">
+                <div class="w-24 h-24 bg-zinc-900 rounded-3xl border border-zinc-800 flex items-center justify-center relative group">
+                    <div class="absolute inset-0 bg-yellow-500/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-700"></div>
+                    <span class="text-6xl group-hover:scale-110 transition-transform">🎬</span>
+                </div>
+            </div>
+
+            <h2 class="text-4xl font-black mb-2 orbitron italic">V1.0.0</h2>
+            <p class="text-zinc-400 text-sm mb-10 tracking-wide">
+                Engineered for <span class="text-white">Android TV</span>, <span class="text-white">Mobile</span>, and <span class="text-white">Tablet</span>. 
+                Zero lag, Pure Quality.
+            </p>
+
+            <div class="space-y-4">
+                <a href="https://github.com/King-daves/kingcinemacount/releases/download/v1.0/kingcinema.apk" 
+                   class="btn-focus block w-full bg-zinc-900/50 py-6 rounded-2xl font-black text-xl tracking-[0.2em] uppercase transition-all"
+                   tabindex="1">
+                    Download APK
+                </a>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 bg-zinc-900/30 rounded-2xl border border-zinc-800/50">
+                        <p class="text-[8px] text-zinc-600 uppercase font-black tracking-widest mb-1">Status</p>
+                        <p class="text-[10px] text-green-500 font-bold uppercase">● Secure & Active</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/30 rounded-2xl border border-zinc-800/50">
+                        <p class="text-[8px] text-zinc-600 uppercase font-black tracking-widest mb-1">Architecture</p>
+                        <p class="text-[10px] text-zinc-300 font-bold uppercase">Universal ARM</p>
                     </div>
                 </div>
-                
-                <h2 class="version-title font-extrabold mb-2 text-yellow-300">Version 1.0.0</h2>
-                <div class="inline-block bg-yellow-500/10 text-yellow-300 text-[10px] sm:text-xs font-black px-4 py-1.5 rounded-full mb-8 md:mb-12 tracking-widest uppercase">
-                    Stable & Optimized Release
-                </div>
-                
-                <p class="description-text text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10 md:mb-14">
-                    Download the official KINGCINEMA APK for seamless, high-quality streaming on your
-                    Android TV, phone, tablet, or even desktop with an emulator. Enjoy a secure, lag-free, and
-                    intuitive user experience designed for every screen.
-                </p>
-
-                <a href="https://github.com/King-daves/kingcinemacount/releases/download/v1.0/kingcinema.apk" 
-                   class="block w-full max-w-md group" tabindex="1">
-                    <button class="glow-button download-button w-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-black rounded-2xl tracking-[0.2em] uppercase flex items-center justify-center gap-4 transition-all focus:ring-4 focus:ring-yellow-500/50">
-                        <span>Download APK Now</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7 animate-bounce-slow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                        </svg>
-                    </button>
-                </a>
-
-                <div class="flex items-center justify-center gap-3 mt-8">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow"></span>
-                    <span class="text-xs sm:text-sm text-slate-500 font-bold uppercase tracking-widest">
-                        100% Secure & Play Protect Verified
-                    </span>
-                </div>
             </div>
         </div>
+    </div>
 
-        <div class="mt-16 border-t border-slate-700/50 pt-8 flex flex-col sm:flex-row justify-between items-center text-slate-500 text-sm">
-            <div class="mb-4 sm:mb-0 text-center sm:text-left">
-                <p class="text-[10px] sm:text-xs font-black uppercase tracking-widest mb-1">Developed By</p>
-                <p class="text-yellow-400 font-bold text-sm sm:text-base">KINGDAVES</p>
+    <div class="mt-16 w-full max-w-xl">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 px-8">
+            <div class="group">
+                <p class="text-[9px] text-zinc-600 uppercase font-black tracking-widest mb-1 group-hover:text-yellow-500 transition-colors">Lead Developer</p>
+                <h3 class="orbitron text-sm font-bold tracking-tighter text-zinc-300">KINGDAVES</h3>
             </div>
-            <div class="text-center sm:text-right">
-                <p class="text-[10px] sm:text-xs font-black uppercase tracking-widest mb-1">In Partnership With</p>
-                <p class="text-white font-bold text-sm sm:text-base">DREFTV</p>
+            
+            <div class="h-8 w-[1px] bg-zinc-800 hidden md:block"></div>
+
+            <div class="group text-center md:text-right">
+                <p class="text-[9px] text-zinc-600 uppercase font-black tracking-widest mb-1 group-hover:text-yellow-500 transition-colors">Partnership</p>
+                <h3 class="orbitron text-sm font-bold tracking-tighter text-zinc-300 uppercase">dreFTV</h3>
             </div>
         </div>
-        <p class="mt-8 text-slate-600 text-xs tracking-tight italic">© 2026 KINGCINEMA ENTERTAINMENT. All Rights Reserved.</p>
+        
+        <p class="text-center mt-12 text-[9px] text-zinc-700 font-bold uppercase tracking-[0.5em]">
+            &copy; 2026 KingCinema Digital Labs
+        </p>
     </div>
 
     <script>
-        // Smooth scroll for anchors (if any)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        // Auto-focus logic for TV Remote
+        window.addEventListener('load', () => {
+            const downloadBtn = document.querySelector('.btn-focus');
+            if (downloadBtn) downloadBtn.focus();
         });
 
-        // Auto-focus for TV/Keyboard navigation (only on larger screens or when needed)
-        // Removed aggressive auto-focus to not annoy mobile users
-        window.addEventListener('load', () => {
-            // Only auto-focus if not a touch device AND it's a TV-like environment OR desktop
-            if (!('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) || window.innerWidth > 1024) {
-                document.querySelector('.glow-button').focus();
-            }
-        });
-        
-        // Basic keyboard navigation for TV/Desktop (optional, as browser handles tabindex by default)
-        // This is more for complex forms. For a single button, tabindex="1" is usually enough.
+        // Keydown support for D-Pad
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && document.activeElement.tagName === 'BUTTON') {
-                document.activeElement.click();
+            if(e.key === 'Enter') {
+                if(document.activeElement.tagName === 'A') {
+                    document.activeElement.click();
+                }
             }
         });
     </script>
-
 </body>
 </html>
