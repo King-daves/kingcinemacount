@@ -1,147 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KINGCINEMA | PREMIUM ACCESS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-    <style>
-        :root { --gold: #facc15; --dark: #050505; }
-        body { 
-            background-color: var(--dark);
-            background-image: 
-                radial-gradient(circle at 50% -20%, #1e1b4b 0%, transparent 50%),
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 30px 30px, 30px 30px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: white;
-            min-height: 100vh;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurevio — Download</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+:root{
+  --gold:#c9a96e;--gold-dim:rgba(201,169,110,0.1);--gold-glow:rgba(201,169,110,0.2);
+  --bg:#090907;--card:#111009;--s2:#181610;--s3:#201e16;
+  --text:#f0ece4;--muted:#6a6458;--dim:#3a3628;--border:rgba(201,169,110,0.1);
+}
+html,body{
+  height:100%;background:var(--bg);color:var(--text);
+  font-family:'DM Sans',sans-serif;overflow:hidden;
+}
+body{
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at 50% -10%,rgba(201,169,110,0.07) 0%,transparent 55%),var(--bg);
+}
 
-        .orbitron { font-family: 'Orbitron', sans-serif; }
-        
-        /* Maangas Focus Effect */
-        .btn-focus {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid rgba(250, 204, 21, 0.1);
-        }
-        .btn-focus:focus, .btn-focus:hover {
-            outline: none !important;
-            transform: scale(1.05);
-            background: var(--gold) !important;
-            color: black !important;
-            box-shadow: 0 0 50px rgba(250, 204, 21, 0.4);
-            border-color: var(--gold);
-        }
+/* ── Landscape: side by side ── */
+.wrap{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+}
 
-        .glass-panel {
-            background: rgba(15, 15, 15, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
+.card{
+  width:100%;max-width:820px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  display:flex;
+  overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,0.5);
+  position:relative;
+}
 
-        /* Animated Scanline Effect */
-        .scanline {
-            width: 100%; height: 2px;
-            background: rgba(250, 204, 21, 0.1);
-            position: absolute;
-            animation: scan 4s linear infinite;
-        }
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
-    </style>
+/* top line accent */
+.card::before{
+  content:'';position:absolute;
+  top:0;left:8%;right:8%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-glow),transparent);
+}
+
+/* Left: branding */
+.left{
+  width:280px;flex-shrink:0;
+  padding:44px 36px;
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  justify-content:space-between;
+  background:rgba(0,0,0,0.15);
+}
+.brand-top{display:flex;flex-direction:column;gap:20px;}
+.logo-img{
+  width:52px;height:52px;border-radius:12px;
+  overflow:hidden;border:1px solid var(--border);
+  background:var(--s2);
+}
+.logo-img img{width:100%;height:100%;object-fit:contain;}
+.brand-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;font-weight:500;letter-spacing:0.14em;
+  color:var(--gold);text-transform:uppercase;line-height:1;
+}
+.brand-sub{
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--muted);margin-top:4px;
+}
+.brand-desc{
+  font-size:12px;color:var(--muted);line-height:1.7;
+  margin-top:16px;
+}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px;}
+.chip{
+  font-size:9px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;
+  padding:4px 9px;border-radius:4px;
+  background:var(--gold-dim);color:var(--gold);
+  border:1px solid rgba(201,169,110,0.18);
+}
+
+.brand-foot{
+  font-size:10px;color:var(--dim);
+  letter-spacing:0.1em;text-transform:uppercase;
+}
+
+/* Right: download content */
+.right{
+  flex:1;padding:44px 36px;
+  display:flex;flex-direction:column;justify-content:center;gap:28px;
+}
+
+.version-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--gold-dim);border:1px solid rgba(201,169,110,0.18);
+  color:var(--gold);padding:5px 12px;border-radius:5px;
+  font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  width:fit-content;
+}
+.vdot{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:0.7;}
+
+.dl-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:500;letter-spacing:0.04em;color:var(--text);
+  line-height:1.2;
+}
+.dl-sub{font-size:12px;color:var(--muted);line-height:1.6;margin-top:6px;}
+
+/* Download button — TV focusable */
+.dl-btn{
+  display:flex;align-items:center;gap:12px;
+  background:var(--gold);color:var(--bg);
+  padding:16px 24px;border-radius:10px;
+  text-decoration:none;border:2px solid var(--gold);
+  font-family:'DM Sans',sans-serif;font-weight:600;
+  font-size:14px;letter-spacing:0.08em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.15s;
+  width:100%;justify-content:center;
+}
+.dl-btn:hover,.dl-btn:focus{
+  background:#d4b87a;border-color:#d4b87a;outline:none;
+  box-shadow:0 0 0 3px rgba(201,169,110,0.25);
+}
+.dl-btn:active{transform:scale(0.98);}
+.dl-btn:focus-visible{
+  box-shadow:0 0 0 4px rgba(201,169,110,0.35);
+  transform:scale(1.01);
+}
+.dl-btn svg{width:20px;height:20px;flex-shrink:0;}
+
+/* Stats row */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+  border-radius:8px;overflow:hidden;
+  border:1px solid var(--border);
+}
+.stat{
+  background:var(--s2);padding:12px 14px;
+  display:flex;flex-direction:column;gap:3px;
+}
+.stat-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:500;color:var(--text);
+}
+.stat-label{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+
+/* Status indicator */
+.status-row{
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;color:var(--muted);letter-spacing:0.06em;
+}
+.status-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#5eb87a;
+  box-shadow:0 0 0 3px rgba(94,184,122,0.15);
+  flex-shrink:0;
+}
+
+/* Credits */
+.credits{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:10px;color:var(--dim);letter-spacing:0.08em;
+  padding-top:16px;border-top:1px solid var(--border);
+}
+
+/* Portrait fallback */
+@media(max-width:680px),(orientation:portrait){
+  .card{flex-direction:column;max-width:400px;}
+  .left{
+    width:100%;border-right:none;border-bottom:1px solid var(--border);
+    padding:28px 24px 20px;flex-direction:row;align-items:center;gap:16px;
+  }
+  .brand-desc,.chips,.brand-foot{display:none;}
+  .brand-top{flex-direction:row;align-items:center;gap:14px;}
+  .brand-name{font-size:24px;}
+  .right{padding:24px;}
+}
+</style>
 </head>
-<body class="flex flex-col items-center justify-center p-6">
+<body>
 
-    <div class="text-center mb-12 relative">
-        <div class="absolute -inset-1 bg-yellow-500 blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-        <h1 class="orbitron text-6xl md:text-8xl font-black tracking-tighter italic text-yellow-500 mb-2">
-            KING<span class="text-white drop-shadow-sm">CINEMA</span>
-        </h1>
-        <div class="flex items-center justify-center gap-4">
-            <div class="h-[1px] w-12 bg-zinc-800"></div>
-            <p class="text-[10px] md:text-xs tracking-[0.6em] text-zinc-500 uppercase font-bold italic">
-                Ultimate Streaming Platform
-            </p>
-            <div class="h-[1px] w-12 bg-zinc-800"></div>
+<div class="wrap">
+  <div class="card">
+
+    <!-- Left: Branding -->
+    <div class="left">
+      <div class="brand-top">
+        <div class="logo-img">
+          <img src="images/icon.png" alt="Aurevio">
         </div>
+        <div>
+          <div class="brand-name">Aurevio</div>
+          <div class="brand-sub">Entertainment Hub</div>
+          <div class="brand-desc">Your all-in-one premium platform for movies, live channels, karaoke &amp; radio — built for TV, mobile &amp; tablet.</div>
+        </div>
+      </div>
+      <div>
+        <div class="chips">
+          <span class="chip">Android TV</span>
+          <span class="chip">Mobile</span>
+          <span class="chip">Tablet</span>
+          <span class="chip">Universal</span>
+        </div>
+        <div class="brand-foot" style="margin-top:20px;">&copy; 2026 Aurevio</div>
+      </div>
     </div>
 
-    <div class="max-w-xl w-full glass-panel rounded-[3rem] p-12 relative overflow-hidden">
-        <div class="scanline"></div>
-        
-        <div class="relative z-10 text-center">
-            <div class="mb-10 inline-block">
-                <div class="w-24 h-24 bg-zinc-900 rounded-3xl border border-zinc-800 flex items-center justify-center relative group">
-                    <div class="absolute inset-0 bg-yellow-500/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-700"></div>
-                    <span class="text-6xl group-hover:scale-110 transition-transform">🎬</span>
-                </div>
-            </div>
+    <!-- Right: Download -->
+    <div class="right">
+      <div>
+        <div class="version-badge"><span class="vdot"></span> v1.0.0 &nbsp;—&nbsp; Latest Release</div>
+        <div class="dl-title" style="margin-top:14px;">Download Aurevio APK</div>
+        <div class="dl-sub">Optimized for Android TV, phone &amp; tablet. One app, all your entertainment.</div>
+      </div>
 
-            <h2 class="text-4xl font-black mb-2 orbitron italic">V1.0.0</h2>
-            <p class="text-zinc-400 text-sm mb-10 tracking-wide">
-                Engineered for <span class="text-white">Android TV</span>, <span class="text-white">Mobile</span>, and <span class="text-white">Tablet</span>. 
-                Zero lag, Pure Quality.
-            </p>
+      <a class="dl-btn" href="https://github.com/King-daves/kingcinemacount/releases/download/v1.1/kingcinema_1.0.apk"
+         tabindex="1" id="dlBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download APK
+      </a>
 
-            <div class="space-y-4">
-                <a href="https://github.com/King-daves/kingcinemacount/releases/download/v1.1/kingcinema_1.0.apk" 
-                   class="btn-focus block w-full bg-zinc-900/50 py-6 rounded-2xl font-black text-xl tracking-[0.2em] uppercase transition-all"
-                   tabindex="1">
-                    Download APK
-                </a>
-                
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-4 bg-zinc-900/30 rounded-2xl border border-zinc-800/50">
-                        <p class="text-[8px] text-zinc-600 uppercase font-black tracking-widest mb-1">Status</p>
-                        <p class="text-[10px] text-green-500 font-bold uppercase">● Secure & Active</p>
-                    </div>
-                    <div class="p-4 bg-zinc-900/30 rounded-2xl border border-zinc-800/50">
-                        <p class="text-[8px] text-zinc-600 uppercase font-black tracking-widest mb-1">Architecture</p>
-                        <p class="text-[10px] text-zinc-300 font-bold uppercase">Universal ARM</p>
-                    </div>
-                </div>
-            </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-val">ARM</div>
+          <div class="stat-label">Architecture</div>
         </div>
+        <div class="stat">
+          <div class="stat-val">Android 5+</div>
+          <div class="stat-label">Minimum OS</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">~18 MB</div>
+          <div class="stat-label">Package Size</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="status-row">
+          <div class="status-dot"></div>
+          Secure &amp; active — no malware, no trackers
+        </div>
+      </div>
+
+      <div class="credits">
+        <span>Lead Dev: Kingdaves</span>
+        <span style="color:var(--border);user-select:none;">|</span>
+        <span>Partnership: dreFTV</span>
+      </div>
     </div>
 
-    <div class="mt-16 w-full max-w-xl">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-8 px-8">
-            <div class="group">
-                <p class="text-[9px] text-zinc-600 uppercase font-black tracking-widest mb-1 group-hover:text-yellow-500 transition-colors">Lead Developer</p>
-                <h3 class="orbitron text-sm font-bold tracking-tighter text-zinc-300">KINGDAVES</h3>
-            </div>
-            
-            <div class="h-8 w-[1px] bg-zinc-800 hidden md:block"></div>
+  </div>
+</div>
 
-            <div class="group text-center md:text-right">
-                <p class="text-[9px] text-zinc-600 uppercase font-black tracking-widest mb-1 group-hover:text-yellow-500 transition-colors">Partnership</p>
-                <h3 class="orbitron text-sm font-bold tracking-tighter text-zinc-300 uppercase">dreFTV</h3>
-            </div>
-        </div>
-        
-        <p class="text-center mt-12 text-[9px] text-zinc-700 font-bold uppercase tracking-[0.5em]">
-            &copy; 2026 KingCinema Digital Labs
-        </p>
-    </div>
+<script>
+// TV Remote: auto-focus download button
+window.addEventListener('load',()=>{
+  document.getElementById('dlBtn').focus();
+});
 
-    <script>
-        // Auto-focus logic for TV Remote
-        window.addEventListener('load', () => {
-            const downloadBtn = document.querySelector('.btn-focus');
-            if (downloadBtn) downloadBtn.focus();
-        });
-
-        // Keydown support for D-Pad
-        document.addEventListener('keydown', (e) => {
-            if(e.key === 'Enter') {
-                if(document.activeElement.tagName === 'A') {
-                    document.activeElement.click();
-                }
-            }
-        });
-    </script>
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&document.activeElement.tagName==='A'){
+    document.activeElement.click();
+  }
+});
+</script>
 </body>
 </html>
